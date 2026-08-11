@@ -12,15 +12,15 @@ const UserView = ({ userInView }) => {
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
   return (
-    <section class="bg-white dark:bg-gray-900 flex flex-col h-screen">
-      <div class="py-20 px-0 mx-auto w-2/3	 lg:py-20">
-        <h2 class="mb-4 text-5xl font-extrabold text-gray-900 dark:text-white">
+    <section className="bg-white dark:bg-gray-900 flex flex-col h-screen">
+      <div className="py-20 px-0 mx-auto w-2/3	 lg:py-20">
+        <h2 className="mb-4 text-5xl font-extrabold text-gray-900 dark:text-white">
           u/{userInView.username}
         </h2>
-        <h2 class="mb-8 items-center text-lg font-semibold text-gray-900 dark:text-white">
+        <h2 className="mb-8 items-center text-lg font-semibold text-gray-900 dark:text-white">
           {totalVotes} likes
         </h2>
-        <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+        <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
           Posts added by {userInView.name}
         </h2>
         {userInView.blogs.map((blog) => (

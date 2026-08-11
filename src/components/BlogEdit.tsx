@@ -7,7 +7,7 @@ import { TextInput, Label, Button, Textarea, Spinner } from "flowbite-react";
 import BlogFooter from "./BlogFooter";
 
 const BlogEdit = ({ blog }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
 

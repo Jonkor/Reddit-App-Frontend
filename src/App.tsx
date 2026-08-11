@@ -24,11 +24,11 @@ import ErrorPage from "./components/ErrorPage";
 import BlogEdit from "./components/BlogEdit";
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
 
-  const user = useSelector((state) => state.users);
-  const blogs = useSelector((state) => state.blogs);
-  const allUsers = useSelector((state) => state.allUsers);
+  const user = useSelector((state: any) => state.users);
+  const blogs = useSelector((state: any) => state.blogs);
+  const allUsers = useSelector((state: any) => state.allUsers);
   const [theme, setTheme] = useState(
     localStorage.getItem("color-theme")
       ? JSON.parse(localStorage.getItem("color-theme"))
@@ -79,7 +79,7 @@ const App = () => {
             <Route path="/create" element={<NewBlog />} />
             <Route
               path="/"
-              element={<BlogList user={user} setUser={setUser} />}
+              element={<BlogList />}
             />
             <Route
               path="/login"

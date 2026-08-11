@@ -1,6 +1,20 @@
-import { useState, forwardRef, useImperativeHandle } from "react";
+import {
+  useState,
+  forwardRef,
+  useImperativeHandle,
+  type ReactNode,
+} from "react";
 
-const Togglable = forwardRef((props, refs) => {
+interface TogglableProps {
+  buttonLabel: string;
+  children?: ReactNode;
+}
+
+export interface TogglableHandle {
+  toggleVisibility: () => void;
+}
+
+const Togglable = forwardRef<TogglableHandle, TogglableProps>((props, refs) => {
   const [visible, setVisible] = useState(false);
 
   const hideWhenVisible = { display: visible ? "none" : "" };

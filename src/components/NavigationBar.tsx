@@ -21,7 +21,7 @@ import { DarkMode } from "@mui/icons-material";
 import { LightMode } from "@mui/icons-material";
 
 const NavigationBar = ({ user, handleThemeSwitch, theme }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   const navigate = useNavigate();
   const logout = (event) => {
     event.preventDefault();
@@ -33,7 +33,7 @@ const NavigationBar = ({ user, handleThemeSwitch, theme }) => {
   return (
     <Navbar
       fluid={true}
-      class="px-4 pt-4 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700"
+      className="px-4 pt-4 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700"
     >
       <Navbar.Brand href="/">
         <ForumIcon className="mr-3 h-6 sm:h-9 dark:fill-white	" />
@@ -100,7 +100,7 @@ const NavigationBar = ({ user, handleThemeSwitch, theme }) => {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="#6B7280"
-                  class="w-6 h-6"
+                  className="w-6 h-6"
                 >
                   <path
                     stroke-linecap="round"

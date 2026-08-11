@@ -5,56 +5,56 @@ const About = () => {
       <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 min-h-screen">
         <div className="flex justify-between px-4 mx-auto max-w-6xl ">
           <article className="mx-auto w-full max-w-6xl	 format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-            <section class="bg-white dark:bg-gray-900">
-              <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:pt-16 pb-16 lg:grid-cols-12">
-                <div class="mr-auto place-self-center lg:col-span-7">
-                  <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-                    <span class="text-transparent bg-clip-text bg-black dark:bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400">
+            <section className="bg-white dark:bg-gray-900">
+              <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:pt-16 pb-16 lg:grid-cols-12">
+                <div className="mr-auto place-self-center lg:col-span-7">
+                  <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                    <span className="text-transparent bg-clip-text bg-black dark:bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400">
                       The New Forum App.
                     </span>
                   </h1>
-                  <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                  <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
                     Purpose-built for the 21st century, with user experience in
                     mind.
                   </p>
                   <a
                     href="/posts"
-                    class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+                    className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
                   >
                     Get started
                     <svg
-                      class="w-5 h-5 ml-2 -mr-1"
+                      className="w-5 h-5 ml-2 -mr-1"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                   </a>
                 </div>
               </div>
             </section>
-            <section class="bg-white dark:bg-gray-900">
-              <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-                <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
-                  <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+            <section className="bg-white dark:bg-gray-900">
+              <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+                <div className="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+                  <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
                     About this Website
                   </h2>
-                  <p class="mb-4 font-light">
+                  <p className="mb-4 font-light">
                     Hi! I'm Juan
                   </p>
 
                   <a
                     href="https://github.com/Jonkor"
                     target="_blank"
-                    class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
+                    className="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
                   >
                     <svg
-                      class="ml-1 w-6 h-6 mr-2"
+                      className="ml-1 w-6 h-6 mr-2"
                       fill="currentColor"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -63,25 +63,25 @@ const About = () => {
                     </svg>{" "}
                     View my Github
                     <svg
-                      class="ml-1 w-6 h-6"
+                      className="ml-1 w-6 h-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                   </a>
                 </div>
               </div>
             </section>
-            <section class="bg-white dark:bg-gray-900">
-              <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-                <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
-                  <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+            <section className="bg-white dark:bg-gray-900">
+              <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+                <div className="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+                  <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
                     Technologies Used
                   </h2>
                   <div className="">

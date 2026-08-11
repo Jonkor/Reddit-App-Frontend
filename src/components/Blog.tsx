@@ -8,9 +8,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import CommentIcon from "@mui/icons-material/Comment";
 
 const Blog = ({ blog }) => {
-  const user = useSelector((state) => state.users);
-  const dispatch = useDispatch();
-  const blogs = useSelector((state) => state.blogs);
+  const user = useSelector((state: any) => state.users);
+  const dispatch = useDispatch<any>();
+  const blogs = useSelector((state: any) => state.blogs);
   console.log(blog);
   if (blog === undefined) {
     return null;

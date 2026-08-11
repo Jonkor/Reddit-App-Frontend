@@ -12,12 +12,12 @@ import Comment from "./Comment";
 
 const BlogView = ({ blog }) => {
   console.log(blog);
-  const user = useSelector((state) => state.users);
-  const allUsers = useSelector((state) => state.allUsers);
+  const user = useSelector((state: any) => state.users);
+  const allUsers = useSelector((state: any) => state.allUsers);
   const [newComment, setNewComment] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   const navigate = useNavigate();
-  const blogs = useSelector((state) => state.blogs);
+  const blogs = useSelector((state: any) => state.blogs);
   if (blog === undefined) {
     return <Spinner />;
   }
@@ -153,10 +153,7 @@ const BlogView = ({ blog }) => {
                 </div>
               </address>
             </header>
-            <p
-              className="text-gray-500 text-lg dark:text-gray-400"
-              align="justify"
-            >
+            <p className="text-justify text-gray-500 text-lg dark:text-gray-400">
               {blog.content}
             </p>
 
@@ -173,7 +170,7 @@ const BlogView = ({ blog }) => {
                   </label>
                   <textarea
                     id="comment"
-                    rows="6"
+                    rows={6}
                     className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                     placeholder="Write a comment..."
                     value={newComment}
