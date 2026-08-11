@@ -5,7 +5,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { useSelector } from "react-redux";
 
 const Notif = () => {
-  const notification = useSelector((state) => state.notifications);
+  const notification = useSelector((state: any) => state.notifications);
   if (notification === null) {
     return null;
   } else if (notification.type === "success") {

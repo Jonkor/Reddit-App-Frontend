@@ -8,7 +8,7 @@ import BlogFooter from "./BlogFooter";
 import { Card } from "flowbite-react";
 
 const BlogList = () => {
-  const blogs = useSelector((state) => state.blogs);
+  const blogs = useSelector((state: any) => state.blogs);
   const blogs1 = [...blogs];
 
   return (
@@ -17,7 +17,7 @@ const BlogList = () => {
         <div className="flex justify-between px-4 mx-auto max-w-6xl ">
           <article className="mx-auto w-full max-w-6xl	 format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             <header className="mb-4 lg:mb-6 not-format">
-              <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+              <h1 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
                 Posts
               </h1>
               <address className="flex items-center mb-6 not-italic"></address>

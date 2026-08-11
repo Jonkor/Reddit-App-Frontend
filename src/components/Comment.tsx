@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Spinner } from "flowbite-react";
 
 const Comment = ({ comment }) => {
-  const allUsers = useSelector((state) => state.allUsers);
+  const allUsers = useSelector((state: any) => state.allUsers);
   const user = allUsers.find((user) => user.id === comment.user);
   if (user === undefined) {
     return <Spinner aria-label="Default status example" />;
