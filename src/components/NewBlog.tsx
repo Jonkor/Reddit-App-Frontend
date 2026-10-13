@@ -5,11 +5,17 @@ import { useNavigate } from "react-router-dom";
 import { setNotification } from "../reducers/notificationReducer";
 import { TextInput, Label, Button, Textarea } from "flowbite-react";
 import BlogFooter from "./BlogFooter";
+import ImagePicker from "./ImagePicker";
+import uploadService from "../services/uploads";
+import type { BlogPayload } from "../types/blog";
 
 const NewBlog = () => {
   const dispatch = useDispatch<any>();
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
 
   const navigate = useNavigate();
 
@@ -20,18 +26,23 @@ const NewBlog = () => {
       content: newContent,
       dateCreated: new Date(),
     };
-    addNewBlog(blogObject);
-    setNewContent("");
-    setNewTitle("");
+    void addNewBlog(blogObject);
   };
 
-  const addNewBlog = async (blogObject) => {
+  const addNewBlog = async (blogObject: BlogPayload) => {
+    setIsSubmitting(true);
     try {
+      const imageId = imageFile
+        ? await uploadService.uploadImage(imageFile, setUploadProgress)
+        : undefined;
       const notif1 = {
         message: `Post was successfully added`,
         type: "success",
       };
-      await dispatch(createBlog(blogObject));
+      await dispatch(createBlog({ ...blogObject, imageId }));
+      setNewContent("");
+      setNewTitle("");
+      setImageFile(null);
       navigate("/");
 
       dispatch(setNotification(notif1, 2500));
@@ -41,6 +52,9 @@ const NewBlog = () => {
         type: "failure",
       };
       dispatch(setNotification(notif2, 2500));
+    } finally {
+      setIsSubmitting(false);
+      setUploadProgress(null);
     }
   };
 
@@ -83,8 +97,19 @@ const NewBlog = () => {
                   />
                 </div>
 
-                <Button className="mt-4 w-24" type="submit">
-                  Submit
+                <ImagePicker
+                  file={imageFile}
+                  onChange={setImageFile}
+                  disabled={isSubmitting}
+                  uploadProgress={uploadProgress}
+                />
+
+                <Button className="mt-4 w-32" type="submit" disabled={isSubmitting}>
+                  {isSubmitting
+                    ? uploadProgress !== null
+                      ? "Uploading..."
+                      : "Saving..."
+                    : "Submit"}
                 </Button>
               </form>
             </article>
