@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Card } from "flowbite-react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CommentIcon from "@mui/icons-material/Comment";
+import { getBlogImageUrl } from "../types/blog";
 
 const Blog = ({ blog }) => {
   const user = useSelector((state: any) => state.users);
@@ -16,6 +17,7 @@ const Blog = ({ blog }) => {
     return null;
   }
   const comments = blog.comments ? blog.comments : [];
+  const imageUrl = getBlogImageUrl(blog);
 
   const handleUpdateBlog = async (blogObject) => {
     try {
@@ -56,6 +58,14 @@ const Blog = ({ blog }) => {
 
   return (
     <Card className="mb-4" href={`/posts/${blog.id}`}>
+      {imageUrl && (
+        <img
+          src={imageUrl}
+          alt=""
+          loading="lazy"
+          className="max-h-72 w-full rounded-lg object-cover"
+        />
+      )}
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {blog.title}
       </h5>

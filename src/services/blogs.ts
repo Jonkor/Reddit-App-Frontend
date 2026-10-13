@@ -1,4 +1,5 @@
 import apiClient from "./apiClient";
+import type { BlogPayload } from "../types/blog";
 
 let token = null;
 
@@ -11,7 +12,7 @@ const getAll = () => {
   return request.then((response) => response.data);
 };
 
-const create = async (newObject) => {
+const create = async (newObject: BlogPayload) => {
   const config = {
     headers: { Authorization: token },
   };
@@ -19,7 +20,7 @@ const create = async (newObject) => {
   return response.data;
 };
 
-const update = async (newObject) => {
+const update = async (newObject: BlogPayload) => {
   const config = {
     headers: { Authorization: token },
   };

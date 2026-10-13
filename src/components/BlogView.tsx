@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BlogFooter from "./BlogFooter";
 import Comment from "./Comment";
+import { getBlogImageUrl } from "../types/blog";
 
 const BlogView = ({ blog }) => {
   console.log(blog);
@@ -23,6 +24,7 @@ const BlogView = ({ blog }) => {
   }
 
   const comments = blog.comments ? blog.comments : [];
+  const imageUrl = getBlogImageUrl(blog);
   const user1 = allUsers.find((user) => user.id === blog.user);
 
   const handleUpdateBlog = async (blogObject) => {
@@ -153,6 +155,13 @@ const BlogView = ({ blog }) => {
                 </div>
               </address>
             </header>
+            {imageUrl && (
+              <img
+                src={imageUrl}
+                alt={blog.title}
+                className="mb-8 max-h-[36rem] w-full rounded-xl object-contain bg-gray-100 dark:bg-gray-800"
+              />
+            )}
             <p className="text-justify text-gray-500 text-lg dark:text-gray-400">
               {blog.content}
             </p>

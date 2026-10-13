@@ -1,25 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { updateBlog } from "../reducers/blogReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setNotification } from "../reducers/notificationReducer";
 import { TextInput, Label, Button, Textarea, Spinner } from "flowbite-react";
 import BlogFooter from "./BlogFooter";
+import ImagePicker from "./ImagePicker";
+import uploadService from "../services/uploads";
+import { getBlogImageId, getBlogImageUrl, type BlogPayload } from "../types/blog";
 
 const BlogEdit = ({ blog }) => {
   const dispatch = useDispatch<any>();
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [removeCurrentImage, setRemoveCurrentImage] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (blog) {
+      setNewTitle(blog.title);
+      setNewContent(blog.content);
+      setImageFile(null);
+      setRemoveCurrentImage(false);
+    }
+  }, [blog]);
 
   const navigate = useNavigate();
   if (blog === undefined) {
     return <Spinner />;
   }
-  if (blog && newTitle === "") {
-    setNewTitle(blog.title);
-    setNewContent(blog.content);
-  }
-
   const editBlog = (event) => {
     event.preventDefault();
     const blogObject = {
@@ -28,18 +39,21 @@ const BlogEdit = ({ blog }) => {
       content: newContent,
       dateCreated: new Date(),
     };
-    editNewBlog(blogObject);
-    setNewContent("");
-    setNewTitle("");
+    void editNewBlog(blogObject);
   };
 
-  const editNewBlog = async (blogObject) => {
+  const editNewBlog = async (blogObject: BlogPayload) => {
+    setIsSubmitting(true);
     try {
+      const uploadedImageId = imageFile
+        ? await uploadService.uploadImage(imageFile, setUploadProgress)
+        : undefined;
+      const imageId = uploadedImageId ?? (removeCurrentImage ? null : getBlogImageId(blog));
       const notif1 = {
         message: `Post was successfully edited`,
         type: "success",
       };
-      await dispatch(updateBlog(blogObject));
+      await dispatch(updateBlog({ ...blogObject, imageId }));
       navigate(`/posts/${blog.id}`);
 
       dispatch(setNotification(notif1, 2500));
@@ -49,6 +63,9 @@ const BlogEdit = ({ blog }) => {
         type: "failure",
       };
       dispatch(setNotification(notif2, 2500));
+    } finally {
+      setIsSubmitting(false);
+      setUploadProgress(null);
     }
   };
 
@@ -91,8 +108,22 @@ const BlogEdit = ({ blog }) => {
                   />
                 </div>
 
-                <Button className="mt-4 w-24" type="submit">
-                  Submit
+                <ImagePicker
+                  file={imageFile}
+                  onChange={setImageFile}
+                  currentImageUrl={getBlogImageUrl(blog)}
+                  removeCurrentImage={removeCurrentImage}
+                  onRemoveCurrentImage={setRemoveCurrentImage}
+                  disabled={isSubmitting}
+                  uploadProgress={uploadProgress}
+                />
+
+                <Button className="mt-4 w-32" type="submit" disabled={isSubmitting}>
+                  {isSubmitting
+                    ? uploadProgress !== null
+                      ? "Uploading..."
+                      : "Saving..."
+                    : "Submit"}
                 </Button>
               </form>
             </article>
